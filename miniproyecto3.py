@@ -1,22 +1,22 @@
 
-def cargar_diccionario_ingredientes():
+def cargar_diccionario_ingredientes(ruta_in):
      """
      Lee el archivo ingredientes.txt y con esa información
      carga el diccionario de ingredientes a ser usado mas adelante
      """
-     text_file = open('/Users/dvilches/Desktop/Diplomado/Parte A/Mod 6/miniproyecto3/ingredientes.txt', 'r')
+     text_file = open(ruta_in, 'r')
      diccionario_ingredientes = {}
      for row in text_file.readlines():
           new_row = [element.rstrip('\n').strip() for element in row.split(" ")]
           diccionario_ingredientes[new_row[0].title()] = int(new_row[1])
      return diccionario_ingredientes
 
-def cargar_diccionario_recetas():
+def cargar_diccionario_recetas(ruta_re):
      """
      lee el archivo recetas.csv y con esa información carga el
      diccionario de recetas a ser usado mas adelante
      """
-     csv_file = open('/Users/dvilches/Desktop/Diplomado/Parte A/Mod 6/miniproyecto3/recetas.csv', 'r')
+     csv_file = open(ruta_re, 'r')
      diccionario_recetas = {}
      for row in csv_file.readlines():
           new_row = [element.rstrip('\n').strip() for element in row.split(",")]
@@ -64,8 +64,11 @@ def prepararReceta(receta,dic_recetas, dic_ingredientes):
           return printStocks(dic_ingredientes)
 
 
-recetas =  cargar_diccionario_recetas()
-ingredientes = cargar_diccionario_ingredientes()
+ruta_in = '/Users/dvilches/Desktop/Diplomado/Parte A/Mod 6/miniproyecto3/ingredientes.txt'
+ruta_re = '/Users/dvilches/Desktop/Diplomado/Parte A/Mod 6/miniproyecto3/recetas.csv'
+
+recetas =  cargar_diccionario_recetas(ruta_re)
+ingredientes = cargar_diccionario_ingredientes(ruta_in)
 
 
 Seguir = True
